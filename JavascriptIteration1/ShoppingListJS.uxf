@@ -1,0 +1,31 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>410</x><y>240</y><w>210</w><h>170</h></coordinates><panel_attributes>Model
+--
+pantryList:[]
+groceryItem:string
+--
+constructor()
+bindPantryListChanged(callback)
+modelCommit(pantryList)
+addItem(groceryItem):string
+editItem(id, updatedText)
+deleteItem(id)
+inTheBasket(id)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>890</x><y>170</y><w>210</w><h>190</h></coordinates><panel_attributes>Controller
+--
+
+--
+constructor(model, view)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>690</x><y>480</y><w>210</w><h>270</h></coordinates><panel_attributes>View
+--
+
+--
+constructor()
+get viewGroceryText()
+viewInput()
+createElement(tag, className)
+getElement(selector)
+showGroceryList(pantryList)
+viewInitLocalListeners()
+bindAddItem(handler)
+bindDeleteItem(handler)
+bindEditItem(handler)
+bindInTheBasketItem(handler)</panel_attributes><additional_attributes></additional_attributes></element></diagram>
