@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamarinIteration1"
+             x:Class="XamarinIteration1.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:ShoppingListViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <Label Text="Shopping list" 
+               FontSize="30" 
+               HorizontalTextAlignment="Center" 
+               TextColor="Black"
+               FontAttributes="Bold"
+               Padding="20"/>
+        <Entry 
+            x:Name="InputField"
+            Text="{Binding NewItemInputValue}" 
+            Placeholder="Enter an item"             
+            
+            />
+        <Button
+            Command="{Binding AddItemCommand}"
+            Text="Add item"
+            BackgroundColor="Red"            
+            Margin="120, 10, 120, 40"
+            />
+
+        
+
+        <ListView x:Name="GroceryList" ItemsSource="{Binding GroceryList}" SelectedItem="SelectedGroceryItem">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <FlexLayout JustifyContent="SpaceBetween" AlignContent="Center" Padding="25, 0">
+                            <CheckBox 
+                                Color="Red"
+                                IsChecked="{Binding InTheBasket}" 
+                                />
+                            <Label Text="{Binding ItemText}" 
+                                   FontSize="Large"
+                                   TextColor="Black"
+                                   />
+                            <Button Text="Delete"
+                                    BackgroundColor="Gray"
+                                    Command="{Binding Path=BindingContext.RemoveItemCommand, Source={x:Reference GroceryList}}"
+                                    CommandParameter="{Binding .}"
+                                    Margin="5" 
+                                    FontSize="13"
+                                    />
+                            <Button Text="Edit"
+                                    BackgroundColor="Red"
+                                    Command="{Binding Path=BindingContext.EditItemCommand, Source={x:Reference GroceryList}}"
+                                    CommandParameter="{Binding .}"
+                                    Margin="5" 
+                                    FontSize="13"
+                                    />
+
+                            
+                        </FlexLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+
+    </StackLayout>
+
+</ContentPage>
+
